@@ -1,27 +1,47 @@
-// Nome: Jo„o Victor Oliveira Ferreira
-// MatrÌcula: 11721EAU006
+// Nome: Jo√£o Victor Oliveira Ferreira
+// Matr√≠cula: 11721EAU006
 
 #include <stdio.h>
-
-int main ()
+int main()
 {
-	char binario[256];
-	int contador=0, k, valor=0, ta_ficando_dificil =1;
-	
-	printf("Digite o autonomo finito: ");
-	scanf("%s", &binario);
-	do	{	contador++;		}while(binario[contador] != '\0');	
-	contador -= 1;	
-	for(k=0; contador>=k; contador--)
-	{	if(binario[contador] == '0')
-		{	valor += 0;		}
-		if(binario[contador] == '1')
-		{	valor += ta_ficando_dificil;	}
-		ta_ficando_dificil *= 2;
+	int est=0, i=0, j=0;
+	char bits[256];
+	while (j>=0)
+	{
+		j=0;
+		printf("Insira um numero valido para que seja determinado se este e multiplo 3: ");
+	    scanf("%s", bits);
+	    for (i=0; bits[i]!='\0'; i++)
+	    {
+	    	if (bits[i]!='0' && bits[i]!='1')
+	    	j++;
+		}
+		j--;
 	}
-	if (valor%3==0)
-	{	printf("\nE divisivel por 3");	}
+	for (i=0; bits[i]!='\0'; i++)
+	{
+		if (bits[i]=='0')
+		{
+			if (est==0)
+				est=0;
+			else if (est==2)
+			    est=1;
+			else
+			    est=2;
+		}
+		else if (bits[i]=='1')
+		{
+			if (est==2)
+			    est=2;
+			else if (est==0)
+			    est=1;
+			else
+			    est=0;
+		}
+	}
+	if (est==0)
+	    printf("\n%s e um multiplo de 3", bits);
 	else
-	{	printf("\nNao e divisivel por 3");	}
+	    printf("\n%s nao um multiplo de 3", bits);
 	return 0;
 }
